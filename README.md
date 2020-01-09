@@ -37,11 +37,11 @@ Payouts.init("<client_id>", "<client_secret>", "PROD")
 | `client_id` | ``                             | `ClientID` which can be generated on cashfree dashboard.                  |
 | `client_secret`         | ``                        | `ClientSecret` which can be found alongside generated `ClientID`.                        |
 
-### Using Promises
+### Using Python requests
 Every method returns a python request object which can be used:
 ```python
 from cashfree_sdk.payouts.beneficiary import Benefeciary
-bene_add = Benefeciary.add("kit_test6", "ankur", "ankur@cashfree.com", "9787570389", "aakjakjakja")
+bene_add = Benefeciary.add("kit_test6", "ankur", "ankur@cashfree.com", "9999999999", "aakjakjakja")
 ```
 
 - For more information about the APIs go to [Payouts](Payouts).
