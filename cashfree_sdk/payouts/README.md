@@ -179,12 +179,6 @@ from cashfree_sdk.payouts.cashgram import Cashgram
     ```
 
 - [Self Withdrawal](https://docs.cashfree.com/docs/payout/guide/#self-withdrawal)
-    ```js
-    Payouts.SelfWithdrawal({
-    	"withdrawalId" : "withdraw1",
-    	"amount": 100,
-    	"remarks": "withdrawal request"
-    }).then(function(d){
-    	console.log(d)
-    });
+    ```python
+    withd = Transfers.self_withdrawal(withdrawalId="withdraw1", amount=1.1, remarks="withdrawal request")
     ```
