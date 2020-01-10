@@ -1,8 +1,8 @@
-from .. import request
-from ..authorize_creds import authorize
-from .create_cashgram import CreateCashgram
-from .get_cashgram_status import GetCashgramStatus
-from .deactivate_cashgram import DeactivateCashgram
+from .. import __request as request
+from ..__authorize_creds import authorize
+from .__create_cashgram import CreateCashgram
+from .__get_cashgram_status import GetCashgramStatus
+from .__deactivate_cashgram import DeactivateCashgram
 
 class Cashgram:
 

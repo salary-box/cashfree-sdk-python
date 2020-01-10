@@ -1,10 +1,10 @@
 
-from .create_beneficiary import CreateBeneficiary
-from .get_beneficiary_details import GetBeneFiciaryDetails
-from .get_beneficiary_id import GetBeneficiaryId
-from .delete_beneficiary import DeleteBeneficiary
-from .. import request
-from ..authorize_creds import authorize
+from .__create_beneficiary import CreateBeneficiary
+from .__get_beneficiary_details import GetBeneFiciaryDetails
+from .__get_beneficiary_id import GetBeneficiaryId
+from .__delete_beneficiary import DeleteBeneficiary
+from .. import __request as request
+from ..__authorize_creds import authorize
 
 class Benefeciary():
     

@@ -1,4 +1,4 @@
-from .payouts_creds import PayoutCreds
+from .__payouts_creds import PayoutCreds
 
 class PayoutsConfig:
     
@@ -12,5 +12,5 @@ class PayoutsConfig:
     def init_creds(self, client_id, client_secret, env):
         self.payout_creds.set_creds(client_secret=client_secret, client_id=client_id)
         self.env = env or "TEST"
-        if env == "PRODUCTION":
+        if env == "PROD":
             self.url = "https://payout-api.cashfree.com"

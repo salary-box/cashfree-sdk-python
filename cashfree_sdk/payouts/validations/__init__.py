@@ -1,9 +1,9 @@
-from .. import request
-from ..authorize_creds import authorize
-from .bank_det_valid import BankDetailsValidation
-from .upi_validation import UPIValidation
-from .bulk_bank_validation import BulkBankValidation
-from .get_bulk_bank_valid_status import GetBulkBankValidationStatus
+from .. import __request as request
+from ..__authorize_creds import authorize
+from .__bank_det_valid import BankDetailsValidation
+from .__upi_validation import UPIValidation
+from .__bulk_bank_validation import BulkBankValidation
+from .__get_bulk_bank_valid_status import GetBulkBankValidationStatus
 
 
 class Validations:

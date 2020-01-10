@@ -1,12 +1,12 @@
-from .. import request
-from ..authorize_creds import authorize
-from .get_balance import GetBalance
-from .request_transfer import RequestTransfer
-from .get_transfer_status import GetTransferStatus
-from .list_transfers import ListTransfers
-from .create_bulk_transfers import CreateBulkTransfer
-from .get_bulk_transfer_status import GetBulkTransferStatus
-from .self_withdrawal import SelfWithdrawal
+from .. import __request as request
+from ..__authorize_creds import authorize
+from .__get_balance import GetBalance
+from .__request_transfer import RequestTransfer
+from .__get_transfer_status import GetTransferStatus
+from .__list_transfers import ListTransfers
+from .__create_bulk_transfers import CreateBulkTransfer
+from .__get_bulk_transfer_status import GetBulkTransferStatus
+from .__self_withdrawal import SelfWithdrawal
 
 
 class Transfers:

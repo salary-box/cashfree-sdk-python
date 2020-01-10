@@ -1,5 +1,5 @@
-from .payouts_creds import PayoutCreds
-from .payouts_config import PayoutsConfig
+from .__payouts_creds import PayoutCreds
+from .__payouts_config import PayoutsConfig
 
 payouts_config_var = PayoutsConfig()
 

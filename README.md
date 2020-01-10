@@ -1,4 +1,4 @@
-# cashfree-sdk-python
+# [BETA]cashfree-sdk-python
 
 The official Cashfree SDK for Python3,
 
@@ -36,6 +36,8 @@ Payouts.init("<client_id>", "<client_secret>", "PROD")
 | `ENV`        | `TEST`                        | Environment to be initialized. Can be set to `TEST` or `PROD` |
 | `client_id` | ``                             | `ClientID` which can be generated on cashfree dashboard.                  |
 | `client_secret`         | ``                        | `ClientSecret` which can be found alongside generated `ClientID`.                        |
+[Payout Library Docs](cashfree_sdk/payouts/README.md)
+
 
 ### Using Python requests
 Every method returns a python request object which can be used:
@@ -43,7 +45,9 @@ Every method returns a python request object which can be used:
 from cashfree_sdk.payouts.beneficiary import Benefeciary
 bene_add = Benefeciary.add("kit_test6", "ankur", "ankur@cashfree.com", "9999999999", "aakjakjakja")
 ```
-
+```diff
+- All Optional Arguments Should Be Passed As An Keyword (Named) Arguments
+```
 - For more information about the APIs go to [Payouts](Payouts).
 - Complete list of [APIs](https://docs.cashfree.com/docs/payout/guide/#fetch-beneficiary-id).
 ### TODO
