@@ -9,7 +9,7 @@ class CreateBeneficiary:
         self.phone = kwargs["phone"]
         self.address1 = kwargs["address1"]
         if kwargs.get("bankAccount"):
-            self.bankAccount = kwargs.get("bankAccout")
+            self.bankAccount = kwargs.get("bankAccount")
         if kwargs.get("ifsc"):
             self.ifsc = kwargs.get("ifsc")
         if kwargs.get("vpa"):
