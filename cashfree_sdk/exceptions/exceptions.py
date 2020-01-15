@@ -52,3 +52,15 @@ class TooManyRequestError(Exception):
 
 class UnknownErrorOccurredError(Exception):
     pass
+
+class ConfigMissingForSignatureAuth(Exception):
+    pass
+
+class InvalidPublicKeyError(Exception):
+    pass
+
+class SignatureCreationFailedError(Exception):
+    pass
+
+class InvalidaWebHookPayloadTypeError(Exception):
+    pass

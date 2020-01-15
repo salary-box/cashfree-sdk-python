@@ -15,6 +15,6 @@ setup(name='cashfree_sdk',
             'cashfree_sdk.payouts.transfers',
             'cashfree_sdk.payouts.validations',
             'cashfree_sdk.exceptions'],
-      install_requires=['requests'],
+      install_requires=['requests', 'pem', 'pycrypto'],
       python_requires='>=3.5',
       zip_safe=False)

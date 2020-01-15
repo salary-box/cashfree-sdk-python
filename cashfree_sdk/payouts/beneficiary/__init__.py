@@ -6,7 +6,7 @@ from .__delete_beneficiary import DeleteBeneficiary
 from .. import __request as request
 from ..__authorize_creds import authorize
 
-class Benefeciary():
+class Beneficiary():
     
     @staticmethod
     @authorize

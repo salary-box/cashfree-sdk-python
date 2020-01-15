@@ -7,7 +7,7 @@ from cashfree_sdk.exceptions.exceptions import *
 def create_headers(token):
     bearer_token = "Bearer " + token
     headers = { 'Authorization' : bearer_token, 'Content-Type': 'application/json', 
-        'cache-control': 'no-cache' }
+        'cache-control': 'no-cache', 'User-Agent': 'Cashfree-SDK' }
     return headers
 
 def trigger_request(params, *args, **kwargs):
@@ -56,7 +56,7 @@ def validate(data):
     data_dict = json.loads(data)
     if "subCode" in data_dict and not (data_dict["subCode"] == "200"
        or data_dict["subCode"] == "201"):
-        msg = data_dict["message"]
+        msg = data_dict["message"] +  "sub_code = " + sub_code
         sub_code = data_dict["subCode"]
         if sub_code == "400":
             raise BadRequestError(msg)

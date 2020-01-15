@@ -16,39 +16,41 @@ Payouts.init("<client_id>", "<client_secret>", "PROD")
 
 | Option              | Default                       | Description                                                                           |
 | ------------------- | ----------------------------- | ------------------------------------------------------------------------------------- |
-| `ENV`        | `TEST`                        | Environment to be initialized. Can be set to `TEST` or `PROD` |
-| `client_id` | ``                             | `ClientID` which can be generated on cashfree dashboard.                  |
-| `client_secret`         | ``                        | `ClientSecret` which can be found alongside generated `ClientID`.                        |
+| `env`        | `TEST`                        | Environment to be initialized. Can be set to `TEST` or `PROD` |
+| `client_id` | ``                             | `client_id` which can be generated on cashfree dashboard.                  |
+| `client_secret`         | ``                        | `client_secret` which can be found alongside generated `client_id`. |
+| `public_key_path`         | `None`                        | `public_key_path` specify the path to your .pem public key file `. |
+| `public_key`         | `None`                        | `public_key` Pass your Public Key to this parameter as an alternative to `public_key_path` . | 
 
 ### Beneficiary
 Contains all APIs related to beneficiary.
 
 ##### Initializing Beneficiary
 ```python
-    from cashfree_sdk.payouts.beneficiary import Benefeciary
+    from cashfree_sdk.payouts.beneficiary import Beneficiary
 ```
 
 - [Add Beneficiary](https://docs.cashfree.com/docs/payout/guide/#add-beneficiary)
     ##### Optional Arguments - group, bankAccount, ifsc, vpa, cardNo, address2, city, state, pincode
     ```python
     
-    bene_add = Benefeciary.add("JOHN18012", "john doe", "johndoe@cashfree.com", "9876543210", "ABC Street", bankAccount="00001111222233", ifsc="HDFC0000001")
+    bene_add = Beneficiary.add("JOHN18012", "john doe", "johndoe@cashfree.com", "9876543210", "ABC Street", bankAccount="00001111222233", ifsc="HDFC0000001")
     // or
-    bene_add = Benefeciary.add(beneId="JOHN18012", name="john doe", email="johndoe@cashfree.com", phone="9876543210", address1="ABC Street", bankAccount="00001111222233", ifsc="HDFC0000001")
+    bene_add = Beneficiary.add(beneId="JOHN18012", name="john doe", email="johndoe@cashfree.com", phone="9876543210", address1="ABC Street", bankAccount="00001111222233", ifsc="HDFC0000001")
     
 
     ```
 - [Get Beneficiary Details](https://docs.cashfree.com/docs/payout/guide/#get-beneficiary-details)
     ```python
-    bene_details = Benefeciary.get_bene_details("JOHN18011")
+    bene_details = Beneficiary.get_bene_details("JOHN18011")
     ```
 - [Get Beneficiary Id](https://docs.cashfree.com/docs/payout/guide/#fetch-beneficiary-id)
     ```python
-   bene_id = Benefeciary.get_bene_id("00001111222233", "HDFC0000001")
+   bene_id = Beneficiary.get_bene_id("00001111222233", "HDFC0000001")
     ```
 - [Remove Beneficiary](https://docs.cashfree.com/docs/payout/guide/#fetch-beneficiary-id)
     ```python
-   remove_bene = Benefeciary.remove_bene("JOHN18011")
+   remove_bene = Beneficiary.remove_bene("JOHN18011")
     ```
     
 ### Transfers
