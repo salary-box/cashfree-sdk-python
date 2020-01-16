@@ -14,7 +14,8 @@ def verify_webhook(webhook_data, payload_type):
     data = {}
     
     if payload_type == 'FORM':
-        data = parse.parse_qs(webhook_data)
+        data = dict( (k, v if len(v)>1 else v[0] ) 
+           for k, v in parse.parse_qs(webhook_data).items() )
         if len(data) == 0 or 'signature' not in data:
             return False
     else:
@@ -32,7 +33,7 @@ def __verify_payload(data):
     signature = data['signature']
     sorted_data_dict = { key:data[key] for key in sorted(data) if key != 'signature'}
     val_str = "".join(list(sorted_data_dict.values()))
-
+    
     hash_val = hmac.new(key.encode(), val_str.encode(), hashlib.sha256).digest()
 
     gen_signature = base64.b64encode(hash_val)
