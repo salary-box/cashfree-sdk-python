@@ -46,8 +46,6 @@ Payouts.init("<client_id>", "<client_secret>", "PROD", public_key= b'public key'
 ```
 
 
-
-
 | Option              | Default                       | Description                                                                           |
 | ------------------- | ----------------------------- | ------------------------------------------------------------------------------------- |
 | `env`        | `TEST`                        | Environment to be initialized. Can be set to `TEST` or `PROD` |
@@ -79,8 +77,8 @@ verification.verify_webhook(webhook_data, 'JSON')
 ### Using Python requests
 Every method returns a python request object which can be used:
 ```python
-from cashfree_sdk.payouts.beneficiary import Benefeciary
-bene_add = Benefeciary.add("kit_test6", "ankur", "ankur@cashfree.com", "9999999999", "aakjakjakja")
+from cashfree_sdk.payouts.beneficiary import Beneficiary
+bene_add = Beneficiary.add("kit_test6", "ankur", "ankur@cashfree.com", "9999999999", "aakjakjakja")
 ```
 ```diff
 - All Optional Arguments Should Be Passed As An Keyword (Named) Arguments

@@ -45,18 +45,21 @@ def make_post_request(end_point, payload, *args, **kwargs):
         payload_json = json.dumps(payload.__dict__)
     res = rq.request("POST", url, data=payload_json, headers=headers)
     if res.status_code == 200:
-        validate(data=res.text)
+        validate(data=res.text, headers=res.headers)
         return res
     raise ServiceDownError
 
 
-def validate(data):
+def validate(data, headers):
+    if not headers or type(headers) != dict:
+        headers = {}
     if not data or data == "":
         raise UnknownErrorOccurredError("No subcode and msg response from the service")
     data_dict = json.loads(data)
     if "subCode" in data_dict and not (data_dict["subCode"] == "200"
        or data_dict["subCode"] == "201"):
-        msg = data_dict["message"] +  "sub_code = " + sub_code
+        msg = "Reason = "+ data_dict["message"] +  ":: response = " + json.dumps(data_dict) + \
+        " request_id  = " + headers.get('X-Request-Id', '')
         sub_code = data_dict["subCode"]
         if sub_code == "400":
             raise BadRequestError(msg)
