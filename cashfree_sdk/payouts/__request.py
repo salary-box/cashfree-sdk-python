@@ -51,7 +51,7 @@ def make_post_request(end_point, payload, *args, **kwargs):
 
 
 def validate(data, headers):
-    if not headers or type(headers) != dict:
+    if not headers:
         headers = {}
     if not data or data == "":
         raise UnknownErrorOccurredError("No subcode and msg response from the service")
