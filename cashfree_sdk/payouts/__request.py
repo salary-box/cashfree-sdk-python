@@ -31,7 +31,7 @@ def make_get_request(end_point, params, *args, **kwargs):
         params_dict = params.__dict__
     res = rq.request("GET", url, headers=headers, params=params_dict)
     if res.status_code == 200:
-        validate(data=res.text)
+        validate(data=res.text, headers=res.headers)
         return res
     raise ServiceDownError
 
