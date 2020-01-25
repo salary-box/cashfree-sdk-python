@@ -7,7 +7,7 @@ from cashfree_sdk.exceptions.exceptions import *
 from cashfree_sdk.payouts import payouts_config_var
 
 
-def verify_webhook(webhook_data, payload_type):
+def verify_webhook(webhook_data, payload_type='FORM'):
     if not payload_type or payload_type not in ('FORM', 'JSON'):
         raise InvalidaWebHookPayloadTypeError()
 
@@ -32,7 +32,7 @@ def __verify_payload(data):
     key = payouts_config_var.payout_creds.client_secret
     signature = data['signature']
     sorted_data_dict = { key:data[key] for key in sorted(data) if key != 'signature'}
-    val_str = "".join(list(sorted_data_dict.values()))
+    val_str = "".join( str(val) for val in sorted_data_dict.values())
     
     hash_val = hmac.new(key.encode(), val_str.encode(), hashlib.sha256).digest()
 
