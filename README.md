@@ -12,7 +12,7 @@ Please refer to the [Cashfree Docs](https://docs.cashfree.com/docs/)  for the co
 
 The preferred way to install the Cashfree SDK for Python is to use the [pip](https://pypi.org/project/pip/) package manager for pip. Simply type the following into a terminal window:
 ```sh
-pip3 install git+https://github.com/cashfree/cashfree-sdk-python.git
+pip3 install cashfree-sdk
 ```
 
 ## Getting Started
