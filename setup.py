@@ -1,10 +1,16 @@
 from setuptools import setup
 
+with open("README.md", "r") as fh:
+    long_description = fh.read()
+
+
 setup(name='cashfree_sdk',
       version='0.1',
       description='Library to integrate cashfree APIs',
+      long_description=long_description,
       long_description_content_type='text/markdown',
-      url='https://github.com/cashfree/cashfree-sdk-python/archive/0.1.tar.gz',
+      url='https://github.com/cashfree/cashfree-sdk-python',
+      download_url='https://github.com/cashfree/cashfree-sdk-python/archive/0.1.tar.gz',
       author='Cashfree',
       author_email='ankur@cashfree.com',
       license='MIT',
