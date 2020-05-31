@@ -83,9 +83,11 @@ bene_add = Beneficiary.add("kit_test6", "ankur", "ankur@cashfree.com", "99999999
 ```diff
 - All Optional Arguments Should Be Passed As An Keyword (Named) Arguments
 ```
+[Readme](cashfree_sdk/exceptions) for the exception thrown for invalid operation and how to handle the exceptions.
+
 - For more information about the APIs go to [Payouts](Payouts).
 - Complete list of [APIs](https://docs.cashfree.com/docs/payout/guide/#fetch-beneficiary-id).
 ### TODO
-- #### PG
-- #### Market Place
-- #### Autocollect
+- [ ] PG
+- [ ] Market Place
+- [ ] Autocollect

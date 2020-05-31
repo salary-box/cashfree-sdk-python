@@ -6,6 +6,9 @@ Please refer to the [Cashfree Docs](https://docs.cashfree.com/docs/)  for the co
 - All Optional Arguments Should Be Passed As An Keyword (Named) Arguments
 ```
 
+[Readme](cashfree_sdk/exceptions) for the exception thrown for invalid operation and how to handle the exceptions.
+
+
 #### Initializing Payouts Module
 
 ```python
