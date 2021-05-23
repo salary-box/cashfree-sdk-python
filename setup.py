@@ -5,12 +5,12 @@ with open("README.md", "r") as fh:
 
 
 setup(name='cashfree_sdk',
-      version='0.1.2',
+      version='0.1.3',
       description='Library to integrate cashfree APIs',
       long_description=long_description,
       long_description_content_type='text/markdown',
       url='https://github.com/cashfree/cashfree-sdk-python',
-      download_url='https://github.com/cashfree/cashfree-sdk-python/archive/0.1.2.tar.gz',
+      download_url='https://github.com/cashfree/cashfree-sdk-python/archive/0.1.3.tar.gz',
       author='Cashfree',
       author_email='ankur@cashfree.com',
       license='MIT',

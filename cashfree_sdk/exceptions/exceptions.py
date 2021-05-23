@@ -64,3 +64,6 @@ class SignatureCreationFailedError(Exception):
 
 class InvalidaWebHookPayloadTypeError(Exception):
     pass
+
+class RequestFailedError(Exception):
+    pass

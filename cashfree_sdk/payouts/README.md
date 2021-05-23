@@ -72,6 +72,14 @@ from cashfree_sdk.payouts.transfers import Transfers
     tnx_req = Transfers.request_transfer(beneId="JOHN18012", amount="100.1", transferId="DEC2017", transferMode="banktransfer", remarks="Test transfer")
     ```
 
+- [Async Request Transfer](https://dev.cashfree.com/payouts-api#standard-transfer-async)
+
+    ##### Optional Arguments - transferMode, remarks
+
+    ```python
+    tnx_req = Transfers.async_request_transfer(beneId="JOHN18012", amount="100.1", transferId="DEC2017", transferMode="banktransfer", remarks="Test transfer")
+    ```
+
 - [Get Transfer Status](https://docs.cashfree.com/docs/payout/guide/#get-transfer-status)
     ```python
     tnx_stats = Transfers.get_transfer_status(referenceId="14057")
@@ -129,12 +137,36 @@ from cashfree_sdk.payouts.validations import Validations
     v_det = Validations.bank_details_validation(name="JOHN", phone="9908712345", bankAccount="026291800001191",ifsc="YESB0000262")
     ```
 
+- [Validate Bank Details V1.2](https://docs.cashfree.com/docs/payout/guide/#bank-details-validation)
+    ##### Optional Arguments - name, phone
+    ```python
+    v_det = Validations.bank_details_validation_v1_2(name="JOHN", phone="9908712345", bankAccount="026291800001191",ifsc="YESB0000262")
+    ```
+
+- [Async Validate Bank Details](https://dev.cashfree.com/bank-account-verification-api#bank-verification-async)
+    ##### Optional Arguments - userId
+    ```python
+    v_det = Validations.async_bank_details_validation(name="JOHN", phone="9908712345", bankAccount="026291800001191",ifsc="YESB0000262", userId="test_user_id")
+    ```
+
+- [Get Validation Status](https://dev.cashfree.com/bank-account-verification-api#get-verification-status)
+    ##### Optional Arguments - bvReId, userId
+    ```diff
+    - Either bvRefId or userId required
+    ```
+
+    ```python
+    v_det = Validations.get_bank_validation_status(bvRefId="1234")
+    //
+    v_det = Validations.get_bank_validation_status(userId="test_user_id")
+    ```
+
 - [Validate UPI Details](https://docs.cashfree.com/docs/payout/guide/#upi-validation)
     ```python
     upi_valid= Validations.upi_validation(name="Cashfree", vpa="success@upi")
     ```
 
-- [Validate Bulk Bank Activation](https://docs.cashfree.com/docs/payout/guide/#bulk-bank-validation-api)
+- [Validate Bulk Bank Accounts](https://docs.cashfree.com/docs/payout/guide/#bulk-bank-validation-api)
     ```python
     entry = [{ "name":"Sameera Cashfree", "bankAccount":"000890289871772", "ifsc":"SCBL0036078", "phone":"9015991882"},{ "name":"Cashfree Sameera", "bankAccount":"0001001289877623", "ifsc":"SBIN0008752", "phone":"9023991882"}]
 
