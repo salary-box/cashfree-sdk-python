@@ -5,12 +5,12 @@ with open("README.md", "r") as fh:
 
 
 setup(name='cashfree_sdk',
-      version='0.1.1',
+      version='0.1.2',
       description='Library to integrate cashfree APIs',
       long_description=long_description,
       long_description_content_type='text/markdown',
       url='https://github.com/cashfree/cashfree-sdk-python',
-      download_url='https://github.com/cashfree/cashfree-sdk-python/archive/0.1.1.tar.gz',
+      download_url='https://github.com/cashfree/cashfree-sdk-python/archive/0.1.2.tar.gz',
       author='Cashfree',
       author_email='ankur@cashfree.com',
       license='MIT',
@@ -21,6 +21,6 @@ setup(name='cashfree_sdk',
             'cashfree_sdk.payouts.transfers',
             'cashfree_sdk.payouts.validations',
             'cashfree_sdk.exceptions'],
-      install_requires=['requests', 'pem', 'pycrypto'],
+      install_requires=['requests', 'pem', 'pycryptodome'],
       python_requires='>=3.5',
       zip_safe=False)
