@@ -57,7 +57,7 @@ def validate(data, headers):
         raise UnknownErrorOccurredError("No subcode and msg response from the service")
     data_dict = json.loads(data)
     if "subCode" in data_dict and not (data_dict["subCode"] == "200"
-       or data_dict["subCode"] == "201"):
+       or data_dict["subCode"] == "201" or data_dict["subCode"] == "202"):
         msg = "Reason = "+ data_dict["message"] +  ":: response = " + json.dumps(data_dict) + \
         " request_id  = " + headers.get('X-Request-Id', '')
         sub_code = data_dict["subCode"]
@@ -79,8 +79,10 @@ def validate(data, headers):
             raise RequestTooLargeError(msg)
         elif sub_code == "422":
             raise InputWrongFormatError(msg)
+        elif sub_code == "424":
+            raise RequestFailedError(msg)
         elif sub_code == "429":
-            raise InputWrongFormatError
+            raise TooManyRequestError(msg)
         elif sub_code == "500":
             raise InternalServerError(msg)
         elif sub_code == "503":

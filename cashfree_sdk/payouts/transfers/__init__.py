@@ -7,6 +7,7 @@ from .__list_transfers import ListTransfers
 from .__create_bulk_transfers import CreateBulkTransfer
 from .__get_bulk_transfer_status import GetBulkTransferStatus
 from .__self_withdrawal import SelfWithdrawal
+from .__async_request_transfer import AsyncRequestTransfer
 
 
 class Transfers:
@@ -100,5 +101,20 @@ class Transfers:
         """
         self_withd_req = SelfWithdrawal(withdrawalId=withdrawalId, amount=amount, **kwargs)
         return request.trigger_request(self_withd_req)
+
+    @staticmethod
+    @authorize
+    def async_request_transfer(beneId, transferId, amount, **kwargs):
+        """Async Request Transfer.
+        :param beneId: BeneId.
+        :param transferId: transferId.
+        :param amount: amount.
+        :param transferMode: (optional) transferMode.
+        :param remarks: (optional) remarks.
+        :return: :class:`Response <Response>` object.
+        :rtype: requests.Response.
+        """
+        req_transfer_req = AsyncRequestTransfer(beneId=beneId, transferId=transferId, amount=amount, **kwargs)
+        return request.trigger_request(req_transfer_req)
 
 
