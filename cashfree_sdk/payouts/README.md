@@ -1,6 +1,6 @@
 ## Payouts API GUIDE
 
-Please refer to the [Cashfree Docs](https://docs.cashfree.com/docs/)  for the complete API reference.
+Please refer to the [Payout Cashfree Docs](https://dev.cashfree.com/payouts)  for the complete API reference.
 
 ```diff
 - All Optional Arguments Should Be Passed As An Keyword (Named) Arguments
