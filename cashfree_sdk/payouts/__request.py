@@ -50,10 +50,10 @@ def make_post_request(end_point, payload, *args, **kwargs):
     if payload:
         payload_json = json.dumps(payload.__dict__)
     res = rq.request("POST", url, data=payload_json, headers=headers)
-    print('url: ' + url)
-    print('headers: ' + str(headers))
-    print('payload_json: ' + payload_json)
-    print('status_code: ', res.status_code)
+    # print('url: ' + url)
+    # print('headers: ' + str(headers))
+    # print('payload_json: ' + payload_json)
+    # print('status_code: ', res.status_code)
     if res.status_code == 200:
         # validate(data=res.text, headers=res.headers)
         return res
