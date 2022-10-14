@@ -1,14 +1,20 @@
 import requests as rq
 import json
-from cashfree_sdk.payouts import payouts_config_var
+import time
+from cashfree_sdk.baas import baas_config_var
 from cashfree_sdk.exceptions.exceptions import *
 
 
 def create_headers(token):
-    bearer_token = "Bearer " + token
-    headers = { 'Authorization' : bearer_token, 'Content-Type': 'application/json', 
-        'cache-control': 'no-cache', 'User-Agent': 'Cashfree-SDK' }
+    headers = {
+        'Content-Type': 'application/json',
+        'User-Agent': 'Cashfree-SDK',
+        'x-client-id': baas_config_var.baas_creds.client_id,
+        'x-client-secret': baas_config_var.baas_creds.client_secret,
+        'cf-api-version': time.strftime('%Y-%m-%d'),
+    }
     return headers
+
 
 def trigger_request(params, *args, **kwargs):
     if params is None:
@@ -22,9 +28,9 @@ def trigger_request(params, *args, **kwargs):
 
 
 def make_get_request(end_point, params, *args, **kwargs):
-    url = payouts_config_var.url + end_point
-    token = payouts_config_var.token
-    
+    url = baas_config_var.url + end_point
+    token = baas_config_var.token
+
     headers = create_headers(token)
     params_dict = {}
     if params:
@@ -37,15 +43,19 @@ def make_get_request(end_point, params, *args, **kwargs):
 
 
 def make_post_request(end_point, payload, *args, **kwargs):
-    url = payouts_config_var.url + end_point
-    token = payouts_config_var.token
+    url = baas_config_var.url + end_point
+    token = baas_config_var.token
     headers = create_headers(token)
     payload_json = ''
     if payload:
         payload_json = json.dumps(payload.__dict__)
     res = rq.request("POST", url, data=payload_json, headers=headers)
+    print('url: ' + url)
+    print('headers: ' + str(headers))
+    print('payload_json: ' + payload_json)
+    print('status_code: ', res.status_code)
     if res.status_code == 200:
-        validate(data=res.text, headers=res.headers)
+        # validate(data=res.text, headers=res.headers)
         return res
     raise ServiceDownError
 
@@ -54,12 +64,13 @@ def validate(data, headers):
     if not headers:
         headers = {}
     if not data or data == "":
-        raise UnknownErrorOccurredError("No subcode and msg response from the service")
+        raise UnknownErrorOccurredError(
+            "No subcode and msg response from the service")
     data_dict = json.loads(data)
     if "subCode" in data_dict and not (data_dict["subCode"] == "200"
-       or data_dict["subCode"] == "201" or data_dict["subCode"] == "202"):
-        msg = "Reason = "+ data_dict["message"] +  ":: response = " + json.dumps(data_dict) + \
-        " request_id  = " + headers.get('X-Request-Id', '')
+                                       or data_dict["subCode"] == "201" or data_dict["subCode"] == "202"):
+        msg = "Reason = " + data_dict["message"] + ":: response = " + json.dumps(data_dict) + \
+            " request_id  = " + headers.get('X-Request-Id', '')
         sub_code = data_dict["subCode"]
         if sub_code == "400":
             raise BadRequestError(msg)
@@ -91,12 +102,9 @@ def validate(data, headers):
             raise UnknownErrorOccurredError(msg)
         else:
             raise UnknownErrorOccurredError(msg)
-    elif ( ( "subCode" in data_dict and ( data_dict["subCode"] == "200"
-       or data_dict["subCode"] == "201" )) or ("statusCode" in data_dict and data_dict["statusCode"] == "200") ): 
-       return
+    elif (("subCode" in data_dict and (data_dict["subCode"] == "200"
+                                       or data_dict["subCode"] == "201")) or ("statusCode" in data_dict and data_dict["statusCode"] == "200")):
+        return
     else:
-        raise UnknownErrorOccurredError("No subcode and msg response from the service , response = " + data)
-                
-
-
-
+        raise UnknownErrorOccurredError(
+            "No subcode and msg response from the service , response = " + data)
