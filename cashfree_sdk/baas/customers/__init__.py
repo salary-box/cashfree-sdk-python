@@ -1,5 +1,6 @@
 from .__create_customer import CreateCustomer
-from ...payouts import __request as request
+from .__get_customer import GetCustomer
+from ...baas import __request as request
 from ...baas import __authorize_creds as authorize
 
 
@@ -16,3 +17,10 @@ class Customer():
             remarks=remarks
         )
         return request.trigger_request(create_customer_request)
+
+    @staticmethod
+    def get(customer_id):
+        get_customer_request = GetCustomer(
+            customer_id=customer_id
+        )
+        return request.trigger_request(get_customer_request)

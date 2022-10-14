@@ -24,4 +24,16 @@ def test_create_customer():
     assert response.status_code == 200
     assert "customer" in response.text
     response_object = json.loads(response.text)
+    assert "customer" in response_object
+    assert response_object["customer"]["customer_id"] == customer_id
+    global CUSTOMER_ID
     CUSTOMER_ID = response_object["customer"]["customer_id"]
+
+
+def test_get_customer():
+    assert CUSTOMER_ID != ''
+    response = Customer.get(customer_id=CUSTOMER_ID)
+    assert response.status_code == 200
+    response_object = json.loads(response.text)
+    assert "customer" in response_object
+    assert response_object["customer"]["customer_id"] == CUSTOMER_ID
